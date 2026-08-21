@@ -27,7 +27,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
 /* hash landings and in-page jumps clear the fixed nav */
-section[id],main[id]{scroll-margin-top:96px}
+section[id],main[id]{scroll-margin-top:80px}
 img,svg,canvas{max-width:100%}
 img{height:auto}
 body{

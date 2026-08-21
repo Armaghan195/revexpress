@@ -7,6 +7,45 @@
   /* ============ RAF-BATCHED SCROLL DISPATCH ============
      Every scroll-driven feature subscribes here instead of adding its own
      listener, so the whole page does one layout read + write per frame. */
+  /* ============ LANDING POSITION ON LOAD / RELOAD ============
+     Chrome restores the previous scroll offset on refresh, which dropped the
+     page into the middle of a section. Take it over: a shared #link lands on
+     its section (clear of the fixed nav), anything else starts at the top. */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  function landAtStart() {
+    const id = location.hash;
+    const target = id.length > 1 ? document.querySelector(id) : null;
+    if (target) {
+      // scrollIntoView honours the section's CSS scroll-margin-top, which is the
+      // single source of truth for the nav gap. Measuring the nav here would
+      // overshoot: it is taller at scrollY 0 than once .scrolled kicks in.
+      // behavior:'auto' is required, or html{scroll-behavior:smooth} animates it
+      // and repeated calls interrupt each other mid-flight.
+      target.scrollIntoView({ behavior: 'auto', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }
+  landAtStart();
+  // A #link target can drift while art and webfonts finish loading above it, so
+  // keep re-asserting until the position holds still (or the reader takes over).
+  if (location.hash.length > 1) {
+    let settled = 0, last = -1, userMoved = false;
+    const release = () => { userMoved = true; };
+    window.addEventListener('wheel', release, { passive: true, once: true });
+    window.addEventListener('touchstart', release, { passive: true, once: true });
+    window.addEventListener('keydown', release, { once: true });
+    const settle = setInterval(() => {
+      if (userMoved || settled > 12) { clearInterval(settle); return; }
+      const y = window.scrollY;
+      landAtStart();
+      settled = (Math.abs(window.scrollY - y) < 1) ? settled + 1 : 0;
+      if (settled >= 3) clearInterval(settle);
+    }, 120);
+  }
+  window.addEventListener('load', () => { if (location.hash.length <= 1) landAtStart(); });
+
   const scrollTasks = [];
   let scrollTicking = false;
   function onScrollFrame(fn) { scrollTasks.push(fn); fn(); }
@@ -639,7 +678,6 @@
       e.preventDefault();
       const y = target.getBoundingClientRect().top + window.scrollY - navOffset();
       window.scrollTo({ top: Math.max(0, y), behavior: reduceMotion ? 'auto' : 'smooth' });
-      history.replaceState(null, '', id);
     });
   });
 

@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Express — The Brand That Has A Creator Army</title>
+<meta name="description" content="Revenue Express scales high-growth DTC brands through AI creator content, Meta advertising, and cross-platform distribution.">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#05070f">
+<meta property="og:title" content="Revenue Express — The Brand That Has A Creator Army">
+<meta property="og:description" content="Revenue Express scales high-growth DTC brands through AI creator content, Meta advertising, and cross-platform distribution.">
+<meta property="og:image" content="assets/logo-lockup.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ambient aurora background (spans whole page) -->
+<div class="aurora-bg" aria-hidden="true">
+  <span class="aurora-blob blob-1"></span>
+  <span class="aurora-blob blob-2"></span>
+  <span class="aurora-blob blob-3"></span>
+  <span class="aurora-blob blob-4"></span>
+</div>
+
+<!-- cursor spotlight -->
+<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+<!-- custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- noise overlay -->
+<div class="noise-overlay"></div>
+
+<!-- progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="Revenue Express — home">
+      <img class="brand-mark" src="assets/logo-mark.png" alt="" width="1106" height="754" decoding="async">
+      <span class="brand-name">Revenue<em>Express</em></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#engine" data-text="Engine"><span>Engine</span></a>
+      <a href="#framework" data-text="Framework"><span>Framework</span></a>
+      <a href="#results" data-text="Results"><span>Results</span></a>
+      <a href="#pricing" data-text="Pricing"><span>Pricing</span></a>
+      <a href="#contact" data-text="Contact"><span>Contact</span></a>
+    </nav>
+
+    <a href="#contact" class="btn btn-ghost nav-cta magnetic">
+      <span>Book a Call</span>
+    </a>
+
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#engine">Engine</a>
+  <a href="#framework">Framework</a>
+  <a href="#results">Results</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <canvas id="fx" class="hero-canvas"></canvas>
+    <div class="hero-glow hero-glow-a" data-parallax="0.15"></div>
+    <div class="hero-glow hero-glow-b" data-parallax="0.25"></div>
+    <div class="hero-grid" data-parallax="0.08"></div>
+
+    <div class="hero-inner">
+      <div class="hero-copy" data-reveal>
+        <div class="eyebrow"><span class="dot-pulse"></span>REV EXPRESS <span class="x">×</span> TIKTOK <span class="x">×</span> META</div>
+        <h1 class="hero-title">
+          <span class="line">The brand with a</span>
+          <span class="line accent-line"><span id="rotatingWord" class="rotating-word">creator army</span><span class="caret"></span></span>
+          <span class="line">wins the most growth.</span>
+        </h1>
+        <p class="hero-sub">We help high-growth DTC brands scale through AI-powered creator volume, performance data, paid media, and cross-platform distribution.</p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary magnetic"><span>Book a Strategy Call</span><i class="arrow"></i></a>
+          <a href="#results" class="btn btn-outline magnetic"><span>See the Results</span></a>
+        </div>
+
+        <div class="hero-proof">
+          <div class="avatars">
+            <span class="av av-1"></span><span class="av av-2"></span><span class="av av-3"></span>
+          </div>
+          <p><strong>10,000+</strong> creators in network producing hundreds of winning videos every month.</p>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="heroVisual" data-reveal>
+        <div class="phone-stack" id="phoneStack">
+          <div class="tilt-card card-back" data-depth="14">
+            <img src="assets/ad4.png" alt="Revenue Express ad creative example — supplement product" loading="lazy">
+          </div>
+          <div class="tilt-card card-mid" data-depth="26">
+            <img src="assets/ad1.png" alt="Revenue Express ad creative example — podcast style testimonial" loading="lazy">
+          </div>
+          <div class="tilt-card card-front" data-depth="40">
+            <img src="assets/hero-phone.png" alt="Revenue Express AI creator ad shown on a phone" loading="lazy">
+            <div class="play-chip"><span class="play-dot"></span>Watch reel</div>
+          </div>
+        </div>
+        <div class="float-badge badge-roas" style="--d:0"><span>9.56×</span>ROAS on AI video</div>
+        <div class="float-badge badge-spend" style="--d:1"><span>$2B+</span>revenue generated</div>
+      </div>
+    </div>
+
+    <div class="hero-marquee">
+      <div class="marquee-track">
+        <span>$2B+ Revenue Generated</span><span>·</span>
+        <span>$1B+ Managed Ad Spend</span><span>·</span>
+        <span>40+ Active Brands</span><span>·</span>
+        <span>30+ Team Members</span><span>·</span>
+        <span>10+ Years In Ecommerce</span><span>·</span>
+        <span>10K+ Creators In Network</span><span>·</span>
+        <span>$2B+ Revenue Generated</span><span>·</span>
+        <span>$1B+ Managed Ad Spend</span><span>·</span>
+        <span>40+ Active Brands</span><span>·</span>
+        <span>30+ Team Members</span><span>·</span>
+        <span>10+ Years In Ecommerce</span><span>·</span>
+        <span>10K+ Creators In Network</span><span>·</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0 40 L480 4 L960 34 L1440 0 L1440 40 Z"/></svg></div>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats" id="stats">
+    <div class="section-inner">
+      <div class="stats-grid">
+        <div class="stat-card" data-reveal>
+          <span class="stat-num" data-count="2" data-prefix="$" data-suffix="B+">0</span>
+          <span class="stat-label">Revenue Generated</span>
+        </div>
+        <div class="stat-card" data-reveal>
+          <span class="stat-num" data-count="1" data-prefix="$" data-suffix="B+">0</span>
+          <span class="stat-label">Managed Ad Spend</span>
+        </div>
+        <div class="stat-card" data-reveal>
+          <span class="stat-num" data-count="40" data-suffix="+">0</span>
+          <span class="stat-label">Active Brands</span>
+        </div>
+        <div class="stat-card" data-reveal>
+          <span class="stat-num" data-count="10" data-suffix="K+">0</span>
+          <span class="stat-label">Creators In Network</span>
+        </div>
+        <div class="stat-card" data-reveal>
+          <span class="stat-num" data-count="200" data-suffix="M+">0</span>
+          <span class="stat-label">Weekly Views</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLIENT MARQUEE ================= -->
+  <section class="clients">
+    <p class="clients-label" data-reveal>Real campaigns. Real results. Trusted by ambitious DTC brands.</p>
+    <div class="clients-marquee">
+      <div class="clients-track">
+        <span>Pudgy Penguins</span><span>The Health Institute</span><span>WonderMe</span><span>RadioShack</span><span>Dressbarn</span><span>Snow</span><span>Vitamin Energy</span><span>Stein Mart</span><span>Modell's Sporting Goods</span><span>The Wolf of Wall Street</span><span>Tai Lopez</span><span>Primitive</span><span>Cookies</span><span>JaxxonCo</span><span>Beauty By Earth</span><span>FlexPro Meals</span><span>Lumen Peptides</span><span>Sugar Baby Skincare</span><span>Millionaire Mutt</span><span>PWR</span><span>Loyal Origins</span><span>Alpha Gear</span><span>Whyte</span><span>Diesel Patriots</span>
+      </div>
+      <div class="clients-track" aria-hidden="true">
+        <span>Pudgy Penguins</span><span>The Health Institute</span><span>WonderMe</span><span>RadioShack</span><span>Dressbarn</span><span>Snow</span><span>Vitamin Energy</span><span>Stein Mart</span><span>Modell's Sporting Goods</span><span>The Wolf of Wall Street</span><span>Tai Lopez</span><span>Primitive</span><span>Cookies</span><span>JaxxonCo</span><span>Beauty By Earth</span><span>FlexPro Meals</span><span>Lumen Peptides</span><span>Sugar Baby Skincare</span><span>Millionaire Mutt</span><span>PWR</span><span>Loyal Origins</span><span>Alpha Gear</span><span>Whyte</span><span>Diesel Patriots</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROBLEM ================= -->
+  <section class="problem" id="problem">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="kicker">The Problem</span>
+        <h2 class="split-words">Why great content alone <span class="accent-text">isn't enough.</span></h2>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card" data-reveal>
+          <span class="problem-index">01</span>
+          <h3>Your Best Content Is Dying Too Fast</h3>
+          <p>TikTok content spikes then disappears. Posts go viral with no system to extend their lifespan.</p>
+        </div>
+        <div class="problem-card" data-reveal>
+          <span class="problem-index">02</span>
+          <h3>CAC Increases Over Time</h3>
+          <p>Without fresh creative, acquisition costs continue climbing month over month.</p>
+        </div>
+        <div class="problem-card" data-reveal>
+          <span class="problem-index">03</span>
+          <h3>Winning Creatives Are Underutilized</h3>
+          <p>Most brands never maximize their best-performing content across channels.</p>
+        </div>
+        <div class="problem-card" data-reveal>
+          <span class="problem-index">04</span>
+          <h3>No Real Distribution System</h3>
+          <p>Revenue is left on the table every single day without a repeatable engine.</p>
+        </div>
+        <div class="problem-card problem-card-wide" data-reveal>
+          <span class="problem-index">05</span>
+          <h3>Great Content Alone Isn't Enough</h3>
+          <p>Without the right system, even the best content won't drive real growth. You need volume, testing, and distribution working together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AI CREATOR ENGINE ================= -->
+  <section class="engine" id="engine">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="kicker">The Solution</span>
+        <h2 class="split-words">AI Creator <span class="accent-text">Engine</span></h2>
+        <p class="section-lead">Scale creative testing without scaling creator costs.</p>
+      </div>
+
+      <div class="engine-flow" data-reveal>
+        <div class="flow-node">
+          <div class="flow-icon icon-blue">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="14" y="8" width="20" height="24" rx="4" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="18" r="4" stroke="currentColor" stroke-width="2"/><path d="M18 27c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="currentColor" stroke-width="2"/><path d="M12 40h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h4>AI Avatars</h4>
+          <p>Custom AI creators trained on your brand, tone, and top-performing hooks.</p>
+        </div>
+        <div class="flow-line"><span></span></div>
+        <div class="flow-node">
+          <div class="flow-icon icon-orange">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="20" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 20v8M24 17v11M32 22v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h4>Unlimited Ads</h4>
+          <p>Hundreds of unique creative variations generated and tested every month.</p>
+        </div>
+        <div class="flow-line"><span></span></div>
+        <div class="flow-node">
+          <div class="flow-icon icon-blue">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 34h32M14 34V22M22 34V14M30 34v-9M38 34v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 20l6-6 6 4 8-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Revenue Graph</h4>
+          <p>Winning creative gets identified fast and scaled straight into paid media.</p>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card compare-old" data-reveal>
+          <span class="compare-tag">Traditional Creators</span>
+          <ul>
+            <li><i>—</i>Slow</li>
+            <li><i>—</i>Expensive</li>
+            <li><i>—</i>Limited output</li>
+          </ul>
+        </div>
+        <div class="compare-card compare-new" data-reveal>
+          <span class="compare-tag">AI Creator Engine</span>
+          <ul>
+            <li><i>✓</i>Unlimited testing</li>
+            <li><i>✓</i>Faster iteration</li>
+            <li><i>✓</i>Lower production costs</li>
+            <li><i>✓</i>Scalable content volume</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider divider-flip"><svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0 40 L480 4 L960 34 L1440 0 L1440 40 Z"/></svg></div>
+
+  <!-- ================= FRAMEWORK (scrollytelling) ================= -->
+  <section class="framework" id="framework">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="kicker">Our Framework</span>
+        <h2 class="split-words">The AI Content <span class="accent-text">Scaling Framework</span></h2>
+      </div>
+    </div>
+
+    <div class="fw-rail">
+      <div class="fw-progress-track"><div class="fw-progress-fill" id="fwProgress"></div></div>
+
+      <div class="fw-step" data-step="1">
+        <span class="fw-num">01</span>
+        <h3>Extract Data</h3>
+        <p>We pull performance data, comments, reviews, and creative history to understand exactly what's working.</p>
+      </div>
+      <div class="fw-step" data-step="2">
+        <span class="fw-num">02</span>
+        <h3>Identify Winning Customer Avatars</h3>
+        <p>We map who buys, why they buy, their objections, and the messaging that actually converts.</p>
+      </div>
+      <div class="fw-step" data-step="3">
+        <span class="fw-num">03</span>
+        <h3>Build AI Creators</h3>
+        <p>Custom AI creator personas are built to match each avatar and speak their language.</p>
+      </div>
+      <div class="fw-step" data-step="4">
+        <span class="fw-num">04</span>
+        <h3>Generate Ad Variations</h3>
+        <p>Dozens of hooks, angles, and formats generated in parallel — no reshoots required.</p>
+      </div>
+      <div class="fw-step" data-step="5">
+        <span class="fw-num">05</span>
+        <h3>Launch &amp; Test</h3>
+        <p>Every variation goes live and gets measured against real Meta and TikTok performance data.</p>
+      </div>
+      <div class="fw-step" data-step="6">
+        <span class="fw-num">06</span>
+        <h3>Scale Winners</h3>
+        <p>Top performers graduate into scaling budgets while low performers get cut — every month.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AVATAR DISCOVERY ================= -->
+  <section class="avatars-section" id="avatars">
+    <div class="section-inner">
+      <div class="avatar-layout">
+        <div class="avatar-copy" data-reveal>
+          <span class="kicker">Avatar Discovery</span>
+          <h2 class="split-words">Before we create <span class="accent-text">content.</span></h2>
+          <ul class="check-list">
+            <li>Who buys</li>
+            <li>Why they buy</li>
+            <li>What objections they have</li>
+            <li>What messaging converts</li>
+          </ul>
+          <p class="then-show">then we build creators for each &darr;</p>
+        </div>
+
+        <div class="avatar-cards">
+          <div class="avatar-card flip" tabindex="0" data-reveal>
+            <div class="avatar-card-inner">
+              <div class="avatar-face">
+                <span class="avatar-glyph">A</span>
+                <h4>Avatar A</h4>
+                <p>Female · 45</p>
+              </div>
+              <div class="avatar-back">
+                <p>Wants anti-aging results. Responds to authority-driven, podcast-style education.</p>
+              </div>
+            </div>
+          </div>
+          <div class="avatar-card flip" tabindex="0" data-reveal>
+            <div class="avatar-card-inner">
+              <div class="avatar-face">
+                <span class="avatar-glyph">B</span>
+                <h4>Avatar B</h4>
+                <p>Male · 35</p>
+              </div>
+              <div class="avatar-back">
+                <p>Performance-focused. Wants proof, data, and direct before/after results.</p>
+              </div>
+            </div>
+          </div>
+          <div class="avatar-card flip" tabindex="0" data-reveal>
+            <div class="avatar-card-inner">
+              <div class="avatar-face">
+                <span class="avatar-glyph">C</span>
+                <h4>Avatar C</h4>
+                <p>Female · 28</p>
+              </div>
+              <div class="avatar-back">
+                <p>Preventative skincare mindset. Responds to relatable, native-feeling creators.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DISTRIBUTION ENGINE (orbit) ================= -->
+  <section class="distribution" id="distribution">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="kicker">Distribution</span>
+        <h2 class="split-words">Turn every winner into a <span class="accent-text">multi-platform asset.</span></h2>
+        <p class="section-lead">One piece of content becomes five.</p>
+      </div>
+
+      <div class="orbit-wrap" data-reveal>
+        <div class="orbit-system">
+          <div class="orbit-ring orbit-ring-1"></div>
+          <div class="orbit-ring orbit-ring-2"></div>
+          <div class="orbit-center">
+            <span class="orbit-play"></span>
+          </div>
+          <div class="orbit-rotor" id="orbitRotor">
+            <div class="orbit-node" style="--i:0">
+              <span class="node-dot node-meta" role="img" aria-label="Meta Ads">
+                <svg class="node-logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M2.6 12.2C2.6 8.6 4.3 6 6.9 6c2.2 0 3.6 1.5 5.1 3.9 1.6-2.4 3-3.9 5.2-3.9 2.6 0 4.3 2.6 4.3 6.2 0 3.4-1.6 5.8-4.2 5.8-2.1 0-3.5-1.5-5.3-4.5C10.4 16.5 9 18 6.8 18c-2.5 0-4.2-2.4-4.2-5.8Zm3-.1c0 2.1.8 3.3 2 3.3 1.1 0 1.9-.8 3.2-2.9l-.6-1C9 9.4 8.2 8.6 7.2 8.6c-1 0-1.6 1.2-1.6 3.5Zm12.6 3.3c1.2 0 1.9-1.2 1.9-3.3 0-2.3-.6-3.5-1.7-3.5-1 0-1.9.9-3.3 3.2l.5.9c1.3 2 2.1 2.7 2.6 2.7Z"/>
+                </svg>
+              </span><em>Meta Ads</em>
+            </div>
+            <div class="orbit-node" style="--i:1">
+              <span class="node-dot node-tiktok" role="img" aria-label="TikTok">
+                <svg class="node-logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13.1 2.4h2.7c.2 1.5.9 2.7 2 3.5.8.6 1.7 1 2.7 1.1v2.8c-1.8-.1-3.4-.7-4.7-1.7v6.3c0 1.5-.4 2.8-1.3 3.9-1.1 1.4-2.6 2.1-4.5 2.1-1.7 0-3.1-.6-4.2-1.8-1-1.1-1.5-2.5-1.5-4.1 0-1.8.7-3.3 2-4.4 1.1-1 2.4-1.5 3.9-1.5.4 0 .8 0 1.2.1v2.9c-.4-.1-.8-.2-1.2-.2-.8 0-1.5.3-2 .8-.6.6-.9 1.3-.9 2.2 0 .9.3 1.6.8 2.2.5.5 1.2.8 2 .8 1 0 1.8-.4 2.3-1.2.3-.5.5-1.1.5-1.9V2.4Z"/>
+                </svg>
+              </span><em>TikTok</em>
+            </div>
+            <div class="orbit-node" style="--i:2">
+              <span class="node-dot node-snap" role="img" aria-label="Snapchat">
+                <svg class="node-logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.2c3.1 0 5 2.2 5 5.1 0 1-.1 1.9-.1 2.3.3.2.8.3 1.3.1.5-.2 1 .1 1.1.5.1.5-.3.9-1.1 1.2-.8.3-1.3.5-1.2 1 .2.9 2 2.3 3.4 2.7.4.1.5.4.4.7-.2.6-1.6.9-2.5 1-.2.4-.3 1-.5 1.2-.2.2-.7.1-1.2 0-.9-.2-2 0-2.8.6-.7.5-1.4 1-2.3 1s-1.6-.5-2.3-1c-.8-.6-1.9-.8-2.8-.6-.5.1-1 .2-1.2 0-.2-.2-.3-.8-.5-1.2-.9-.1-2.3-.4-2.5-1-.1-.3 0-.6.4-.7 1.4-.4 3.2-1.8 3.4-2.7.1-.5-.4-.7-1.2-1-.8-.3-1.2-.7-1.1-1.2.1-.4.6-.7 1.1-.5.5.2 1 .1 1.3-.1 0-.4-.1-1.3-.1-2.3 0-2.9 1.9-5.1 5-5.1Z"/>
+                </svg>
+              </span><em>Snapchat</em>
+            </div>
+            <div class="orbit-node" style="--i:3">
+              <span class="node-dot node-yt" role="img" aria-label="YouTube Ads">
+                <svg class="node-logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22.5 7.4a2.7 2.7 0 0 0-1.9-1.9C18.9 5 12 5 12 5s-6.9 0-8.6.5A2.7 2.7 0 0 0 1.5 7.4C1 9.1 1 12 1 12s0 2.9.5 4.6a2.7 2.7 0 0 0 1.9 1.9C5.1 19 12 19 12 19s6.9 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9c.5-1.7.5-4.6.5-4.6s0-2.9-.5-4.6Z"/>
+                  <path class="node-logo-cut" d="M9.8 15.3 15.5 12 9.8 8.7Z"/>
+                </svg>
+              </span><em>YouTube Ads</em>
+            </div>
+            <div class="orbit-node" style="--i:4">
+              <span class="node-dot node-app" role="img" aria-label="AppLovin">
+                <svg class="node-logo" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M11.1 3.3a1 1 0 0 1 1.8 0l8.5 16.2a1 1 0 0 1-.9 1.5H14a1 1 0 0 1-.9-.6l-1.6-3.3a1 1 0 0 0-1.8 0l-1.6 3.3a1 1 0 0 1-.9.6H3.6a1 1 0 0 1-.9-1.5Z"/>
+                </svg>
+              </span><em>AppLovin</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbit-benefits">
+          <div class="benefit"><span class="check">✓</span><div><h5>4× Distribution</h5><p>Get your content in front of more high-intent audiences.</p></div></div>
+          <div class="benefit"><span class="check">✓</span><div><h5>Lower CAC</h5><p>Optimize across platforms to reduce acquisition costs.</p></div></div>
+          <div class="benefit"><span class="check">✓</span><div><h5>Compound Content Value</h5><p>One winning piece keeps delivering results across channels.</p></div></div>
+        </div>
+      </div>
+
+      <div class="dist-steps">
+        <div class="dist-step" data-reveal><span>01</span><h5>Launch</h5><p>Deploy creator stacks.</p></div>
+        <div class="dist-step" data-reveal><span>02</span><h5>Track</h5><p>Monitor views, clicks, sales.</p></div>
+        <div class="dist-step" data-reveal><span>03</span><h5>Scale</h5><p>Double down on winners.</p></div>
+        <div class="dist-step" data-reveal><span>04</span><h5>Cut</h5><p>Remove low performers.</p></div>
+        <div class="dist-step" data-reveal><span>05</span><h5>Repeat</h5><p>Repeat every month.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0 40 L480 4 L960 34 L1440 0 L1440 40 Z"/></svg></div>
+
+  <!-- ================= RESULTS / CASE STUDY ================= -->
+  <section class="results" id="results">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="kicker">Verified By Hyros</span>
+        <h2 class="split-words">Creative transformation, <span class="accent-text">by the numbers.</span></h2>
+        <p class="section-lead">How podcast-style AI video creatives unlocked stronger ROAS, lower acquisition costs, and clearer attribution on Meta.</p>
+      </div>
+
+      <p class="drag-hint" data-reveal><span class="drag-hint-icon">⇔</span>Drag to compare legacy images vs. AI video creatives</p>
+      <div class="results-compare" id="resultsCompare" data-reveal>
+        <div class="rc-col rc-old" id="rcOld" style="flex-basis:50%">
+          <span class="rc-label">Legacy Images</span>
+          <div class="rc-metric"><span class="rc-num">6.09×</span><span class="rc-name">ROAS</span></div>
+          <div class="rc-metric"><span class="rc-num">$9.98</span><span class="rc-name">Cost / Lead</span></div>
+          <div class="rc-metric"><span class="rc-num">$302.51</span><span class="rc-name">Cost / Sale</span></div>
+        </div>
+
+        <div class="rc-handle" id="rcHandle" role="slider" aria-label="Drag to compare legacy images versus AI video creatives" aria-valuemin="20" aria-valuemax="80" aria-valuenow="50" tabindex="0">
+          <span class="rc-handle-line"></span>
+          <span class="rc-handle-grip">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 7 4 12l4 5M16 7l4 5-4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="rc-handle-line"></span>
+        </div>
+
+        <div class="rc-col rc-new" id="rcNew" style="flex-basis:50%">
+          <span class="rc-label">AI Video Creatives</span>
+          <div class="rc-metric"><span class="rc-num" data-count="9.56" data-decimals="2" data-suffix="×">0</span><span class="rc-name">ROAS <em>+57.1%</em></span></div>
+          <div class="rc-metric"><span class="rc-num" data-count="6.70" data-decimals="2" data-prefix="$">0</span><span class="rc-name">Cost / Lead <em>−32.9%</em></span></div>
+          <div class="rc-metric"><span class="rc-num" data-count="114.02" data-decimals="2" data-prefix="$">0</span><span class="rc-name">Cost / Sale <em>−62.3%</em></span></div>
+        </div>
+      </div>
+
+      <div class="results-bars" data-reveal>
+        <div class="bar-row">
+          <span class="bar-title">ROAS</span>
+          <div class="bar-track"><div class="bar-fill bar-old" data-target="38"><em>6.09×</em></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-title"></span>
+          <div class="bar-track"><div class="bar-fill bar-new" data-target="60"><em>9.56×</em></div></div>
+        </div>
+      </div>
+
+      <p class="results-callout" data-reveal>Turning a testing budget of <strong>$10,375.81</strong> into <strong>$99,196.55</strong> in attributed revenue — <span class="accent-text">$9.56 for every dollar spent.</span></p>
+
+      <div class="monthly-growth" data-reveal>
+        <div class="mg-head">
+          <h3>Consistent creative testing. Stronger performance every month.</h3>
+        </div>
+        <div class="mg-chart">
+          <div class="mg-col"><div class="mg-bar" data-target="35" data-fill="1"></div><span class="mg-val">1.4×</span><span class="mg-month">Mar 2026</span></div>
+          <div class="mg-col"><div class="mg-bar" data-target="55" data-fill="1"></div><span class="mg-val">1.8×</span><span class="mg-month">Apr 2026</span></div>
+          <div class="mg-col"><div class="mg-bar" data-target="100" data-fill="1"></div><span class="mg-val">2.3×</span><span class="mg-month">May 2026</span></div>
+        </div>
+        <div class="mg-foot">
+          <div><strong>$3.05M → $4.6M</strong><span>Ad spend scaled</span></div>
+          <div><strong>$4.3M → $10.9M</strong><span>Revenue generated</span></div>
+          <div><strong>32,237 → 75,080</strong><span>Purchases</span></div>
+        </div>
+      </div>
+
+      <div class="ad-gallery" data-reveal>
+        <h3>The winning creative</h3>
+        <p class="drag-hint drag-hint-sm"><span class="drag-hint-icon">⇔</span>Drag to browse</p>
+        <div class="ad-gallery-track" id="adGalleryTrack">
+          <div class="ad-phone"><img src="assets/ad1.png" alt="Podcast-style AI creator ad — I sat in" loading="lazy"></div>
+          <div class="ad-phone"><img src="assets/ad2.png" alt="Podcast-style AI creator ad — I still have the" loading="lazy"></div>
+          <div class="ad-phone"><img src="assets/ad3.png" alt="Podcast-style AI creator ad — read if you have a cabinet full of supplements" loading="lazy"></div>
+          <div class="ad-phone"><img src="assets/ad4.png" alt="Podcast-style AI creator ad — a scoop of this" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section class="pricing" id="pricing">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="kicker">Deliverables</span>
+        <h2 class="split-words">AI Creator <span class="accent-text">Packages</span></h2>
+        <p class="section-lead">Built for brands that want to scale. 3-month commitment.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card" data-reveal>
+          <h3>Basic</h3>
+          <div class="price-amt">$10K</div>
+          <ul>
+            <li>5 AI Creators</li>
+            <li>100 Videos</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline magnetic full"><span>Get Started</span></a>
+        </div>
+        <div class="price-card" data-reveal>
+          <h3>Growth</h3>
+          <div class="price-amt">$20K</div>
+          <ul>
+            <li>10 AI Creators</li>
+            <li>250 Videos</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline magnetic full"><span>Get Started</span></a>
+        </div>
+        <div class="price-card" data-reveal>
+          <h3>Scale</h3>
+          <div class="price-amt">$35K</div>
+          <ul>
+            <li>20 AI Creators</li>
+            <li>500 Videos</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline magnetic full"><span>Get Started</span></a>
+        </div>
+        <div class="price-card price-featured" data-reveal>
+          <span class="price-tag">Most Popular</span>
+          <h3>Enterprise</h3>
+          <div class="price-amt">$50K</div>
+          <ul>
+            <li>30 AI Creators</li>
+            <li>800 Videos</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary magnetic full"><span>Get Started</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider divider-flip"><svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0 40 L480 4 L960 34 L1440 0 L1440 40 Z"/></svg></div>
+
+  <!-- ================= TIMELINE ================= -->
+  <section class="timeline-section" id="timeline">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="kicker">Next Steps</span>
+        <h2 class="split-words">What happens <span class="accent-text">next.</span></h2>
+      </div>
+      <div class="timeline-grid">
+        <div class="tl-card" data-reveal><span class="tl-week">Week 1</span><ul><li>Data extraction</li><li>Avatar discovery</li></ul></div>
+        <div class="tl-card" data-reveal><span class="tl-week">Week 2</span><ul><li>AI creator development</li><li>Script creation</li></ul></div>
+        <div class="tl-card" data-reveal><span class="tl-week">Week 3</span><ul><li>Content launch</li></ul></div>
+        <div class="tl-card tl-card-accent" data-reveal><span class="tl-week">Week 4</span><ul><li>Testing</li><li>Optimization</li><li>Scale</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT / CTA ================= -->
+  <section class="contact" id="contact">
+    <div class="contact-glow"></div>
+    <div class="section-inner contact-inner">
+      <div class="contact-copy" data-reveal>
+        <span class="kicker">Let's Build Your Creator Army</span>
+        <h2 class="split-words">Ready to scale <span class="accent-text">winning creative?</span></h2>
+        <p>Tell us about your brand. We'll follow up within one business day with next steps.</p>
+        <div class="contact-detail">
+          <span>hello@revenueexpress.com</span>
+          <span>Rev Express × TikTok × Meta</span>
+        </div>
+      </div>
+
+      <form class="contact-form" data-reveal id="contactForm">
+        <canvas id="confetti" class="confetti-canvas"></canvas>
+        <div class="form-row">
+          <label>Name
+            <input type="text" name="name" placeholder="Jordan Smith" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" placeholder="you@brand.com" required>
+          </label>
+        </div>
+        <label>Brand / Company
+          <input type="text" name="company" placeholder="Your Brand Inc.">
+        </label>
+        <label>Monthly Ad Spend
+          <select name="spend">
+            <option>Under $10K</option>
+            <option>$10K – $50K</option>
+            <option>$50K – $250K</option>
+            <option>$250K+</option>
+          </select>
+        </label>
+        <label>What are you looking to scale?
+          <textarea name="message" rows="3" placeholder="Tell us about your goals..."></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary magnetic full"><span>Send &amp; Book a Call</span><i class="arrow"></i></button>
+        <p class="form-note" id="formNote">We'll never share your info. No spam, ever.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="section-inner footer-inner">
+    <div class="footer-brand">
+      <img class="brand-mark footer-mark" src="assets/logo-mark.png" alt="Revenue Express" width="1106" height="754" loading="lazy" decoding="async">
+      <p>Revenue Express © <span id="year"></span>. The creator army for high-growth DTC brands.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#engine">Engine</a>
+      <a href="#framework">Framework</a>
+      <a href="#results">Results</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

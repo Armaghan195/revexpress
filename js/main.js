@@ -9,42 +9,55 @@
      listener, so the whole page does one layout read + write per frame. */
   /* ============ LANDING POSITION ON LOAD / RELOAD ============
      Chrome restores the previous scroll offset on refresh, which dropped the
-     page into the middle of a section. Take it over: a shared #link lands on
-     its section (clear of the fixed nav), anything else starts at the top. */
+     page into the middle of a section. Take the landing over instead.
+
+     A #link is corrected toward its target until the position actually holds,
+     rather than being set once. Firing once -- on load, after two frames, or
+     after document.fonts.ready -- all raced the webfont swap and Chrome's own
+     fragment pass, and landed anywhere from 13 to 180px off, or occasionally
+     not at all. Converging is immune to whichever finishes last. */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-  function landAtStart() {
+  const NAV_GAP = 80;  // matches section[id]{scroll-margin-top} in the stylesheet
+
+  function targetTop() {
     const id = location.hash;
-    const target = id.length > 1 ? document.querySelector(id) : null;
-    if (target) {
-      // scrollIntoView honours the section's CSS scroll-margin-top, which is the
-      // single source of truth for the nav gap. Measuring the nav here would
-      // overshoot: it is taller at scrollY 0 than once .scrolled kicks in.
-      // behavior:'auto' is required, or html{scroll-behavior:smooth} animates it
-      // and repeated calls interrupt each other mid-flight.
-      target.scrollIntoView({ behavior: 'auto', block: 'start' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    }
+    const el = id.length > 1 ? document.querySelector(id) : null;
+    if (!el) return 0;
+    return Math.max(0, el.getBoundingClientRect().top + window.scrollY - NAV_GAP);
   }
-  landAtStart();
-  // A #link target can drift while art and webfonts finish loading above it, so
-  // keep re-asserting until the position holds still (or the reader takes over).
+
+  function land() {
+    const want = targetTop();
+    // 'instant', not 'auto': per CSSOM, 'auto' defers to the CSS scroll-behavior
+    // property, which is smooth on this page. Using it made every correction
+    // animate, and each new one interrupted the last, so the landing crept
+    // toward the target instead of arriving. 'instant' is the real jump.
+    if (Math.abs(window.scrollY - want) > 1) window.scrollTo({ top: want, behavior: 'instant' });
+  }
+
+  land();
   if (location.hash.length > 1) {
-    let settled = 0, last = -1, userMoved = false;
-    const release = () => { userMoved = true; };
+    // Converge only for a #link. Running this without one would pin the page
+    // at the top for as long as it ran, overriding any scroll that is not a
+    // wheel, touch or key -- a smooth-scrolling nav click, for instance.
+    let released = false;
+    const release = () => { released = true; };
     window.addEventListener('wheel', release, { passive: true, once: true });
     window.addEventListener('touchstart', release, { passive: true, once: true });
     window.addEventListener('keydown', release, { once: true });
-    const settle = setInterval(() => {
-      if (userMoved || settled > 12) { clearInterval(settle); return; }
-      const y = window.scrollY;
-      landAtStart();
-      settled = (Math.abs(window.scrollY - y) < 1) ? settled + 1 : 0;
-      if (settled >= 3) clearInterval(settle);
-    }, 120);
+
+    let holds = 0;
+    const converge = setInterval(() => {
+      if (released) { clearInterval(converge); return; }
+      holds = Math.abs(window.scrollY - targetTop()) <= 1 ? holds + 1 : 0;
+      if (holds >= 6) { clearInterval(converge); return; }  // steady for ~600ms
+      land();
+    }, 100);
+    setTimeout(() => clearInterval(converge), 4000);
+  } else {
+    window.addEventListener('load', land);
   }
-  window.addEventListener('load', () => { if (location.hash.length <= 1) landAtStart(); });
 
   const scrollTasks = [];
   let scrollTicking = false;
@@ -142,6 +155,26 @@
       burger.classList.toggle('open');
     });
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  }
+
+  /* ============ AVATAR CARDS: TAP TO FLIP ON TOUCH ============ */
+  const avatarCards = document.querySelectorAll('.avatar-card');
+  if (avatarCards.length) {
+    avatarCards.forEach(card => {
+      // Pointer type is checked per event rather than once at load: hybrids can
+      // switch between trackpad and touchscreen mid-session.
+      card.addEventListener('pointerup', (e) => {
+        if (e.pointerType === 'mouse') return;
+        const open = card.classList.contains('is-flipped');
+        avatarCards.forEach(c => c.classList.remove('is-flipped'));
+        card.classList.toggle('is-flipped', !open);
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        card.classList.toggle('is-flipped');
+      });
+    });
   }
 
   /* ============ ROTATING HERO WORD ============ */
@@ -362,17 +395,17 @@
       const py = (e.clientY - r.top) / r.height - 0.5;
       cards.forEach(card => {
         const depth = parseFloat(card.dataset.depth) || 20;
-        const base = getComputedStyle(card).getPropertyValue('--base') || '';
-        const rotY = px * depth * 0.6;
-        const rotX = -py * depth * 0.6;
-        const tx = px * depth;
-        const ty = py * depth;
-        card.style.setProperty('--tilt', `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) rotateX(${rotX}deg) rotateY(${rotY}deg)`);
-        card.style.transform = card.style.getPropertyValue('--tilt');
+        // Drive only --tilt. Writing style.transform here used to replace the
+        // whole transform, discarding the card's --pos, so the three handsets
+        // collapsed into a pile on top of each other the moment the pointer
+        // entered the hero. The stylesheet composes --pos and --tilt instead.
+        card.style.setProperty('--tilt',
+          `translate(${px * depth}px, ${py * depth}px) ` +
+          `rotateX(${-py * depth * 0.6}deg) rotateY(${px * depth * 0.6}deg)`);
       });
     });
     heroVisual.addEventListener('mouseleave', () => {
-      cards.forEach(card => { card.style.transform = ''; });
+      cards.forEach(card => { card.style.removeProperty('--tilt'); });
     });
   }
 
@@ -568,6 +601,16 @@
   /* ============ DRAGGABLE AD GALLERY (with momentum) ============ */
   const adTrack = document.getElementById('adGalleryTrack');
   if (adTrack) {
+    // Only promise "drag to browse" when the track actually overflows; at wide
+    // viewports all four creatives fit and there is nothing to drag.
+    const dragHint = adTrack.parentElement.querySelector('.drag-hint');
+    const syncHint = () => {
+      if (dragHint) dragHint.classList.toggle('is-idle', adTrack.scrollWidth <= adTrack.clientWidth + 4);
+    };
+    syncHint();
+    window.addEventListener('resize', syncHint);
+    window.addEventListener('load', syncHint);
+
     let isDown = false, startX = 0, startScroll = 0, vel = 0, lastX = 0, lastT = 0;
     adTrack.addEventListener('pointerdown', (e) => {
       isDown = true;

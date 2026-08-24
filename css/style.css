@@ -778,6 +778,65 @@ section{background:transparent}
   [data-reveal]{opacity:1 !important;transform:none !important}
 }
 
+/* ===================== BUILT BY ORCANE ===================== */
+/* Same treatment as the client wall: a white mark held back at low opacity,
+   lifting to full strength on interaction. The mark doubles as the O of the
+   wordmark, so "O" + "rcane" reads as one word. */
+.built-by-row{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);display:flex;justify-content:center}
+.built-by{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:11px 20px;border-radius:100px;
+  color:#fff;opacity:.55;
+  border:1px solid transparent;background:transparent;
+  transition:opacity .4s var(--ease),transform .4s var(--ease),
+             background .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+}
+.built-by-label{
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:currentColor;
+}
+.built-by-lockup{display:inline-flex;align-items:baseline;gap:0}
+.built-by-mark{
+  display:inline-block;width:1em;height:1em;font-size:19px;
+  /* Sits on the wordmark's baseline and overshoots it slightly, the way a
+     round letter should, so the ring reads as the O of Orcane. */
+  transform:translateY(.07em);
+}
+.built-by-mark svg{
+  display:block;width:100%;height:100%;overflow:visible;
+  transition:transform .95s cubic-bezier(.66,0,.24,1);
+}
+.built-by-name{
+  font-family:var(--ff-display);font-size:17px;font-weight:500;letter-spacing:.005em;
+  margin-left:.06em;
+}
+.built-by-cta{display:inline-flex;opacity:.75;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+
+/* the whole chip lights up, and the O turns a full rotation */
+.built-by:hover,.built-by:focus-visible{
+  opacity:1;transform:translateY(-2px);
+  background:rgba(27,62,245,.10);
+  border-color:rgba(93,124,255,.45);
+  box-shadow:0 10px 34px -12px rgba(27,62,245,.75),inset 0 1px 0 rgba(255,255,255,.10);
+  outline:none;
+}
+.built-by:hover .built-by-mark svg,.built-by:focus-visible .built-by-mark svg{transform:rotate(360deg)}
+/* the fin is monochrome at rest to match the client wall, and shows Orcane's
+   blue once you engage with it */
+.built-by .orcane-fin{fill:currentColor;transition:fill .4s var(--ease)}
+.built-by:hover .orcane-fin,.built-by:focus-visible .orcane-fin{fill:#3D63FF}
+.built-by:hover .built-by-cta,.built-by:focus-visible .built-by-cta{opacity:1;transform:scale(1.08)}
+.built-by:active{transform:translateY(0) scale(.985)}
+@media (max-width:520px){
+  .built-by{gap:9px;padding:10px 15px}
+  .built-by-label{font-size:10px;letter-spacing:.07em}
+  .built-by-mark{font-size:15px}
+  .built-by-name{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  .built-by:hover .built-by-mark svg,.built-by:focus-visible .built-by-mark svg{transform:none}
+}
+
 /* ===================== GRADIENT TEXT FALLBACK ===================== */
 /* Without background-clip:text these rules would paint a gradient block and
    invisible glyphs. Fall back to a solid accent instead of losing the copy. */

@@ -4,3 +4,12 @@ Desktop.ini
 .DS_Store
 .vscode/
 .idea/
+
+# Next.js / portal
+node_modules/
+.next/
+.pgdata/
+.env
+.env.local
+next-env.d.ts
+*.tsbuildinfo

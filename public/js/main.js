@@ -149,12 +149,32 @@
   /* ============ MOBILE MENU ============ */
   const burger = document.getElementById('navBurger');
   const mobileMenu = document.getElementById('mobileMenu');
+  const menuBackdrop = document.getElementById('menuBackdrop');
   if (burger) {
-    burger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      burger.classList.toggle('open');
+    // One place decides the state, so the panel, the burger, the backdrop and
+    // what a screen reader is told can never drift apart.
+    const setMenu = open => {
+      mobileMenu.classList.toggle('open', open);
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (menuBackdrop) {
+        menuBackdrop.hidden = false;
+        menuBackdrop.classList.toggle('open', open);
+      }
+      // Stop the page behind the sheet from scrolling under a thumb drag.
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    burger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+    // Without these the only way out of the menu is the burger itself, which is
+    // easy to miss once the sheet covers most of the screen.
+    if (menuBackdrop) menuBackdrop.addEventListener('click', () => setMenu(false));
+    document.addEventListener('keydown', ev => {
+      if (ev.key === 'Escape' && mobileMenu.classList.contains('open')) setMenu(false);
     });
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
   }
 
   /* ============ AVATAR CARDS: TAP TO FLIP ON TOUCH ============ */
@@ -692,19 +712,58 @@
   const form = document.getElementById('contactForm');
   const formNote = document.getElementById('formNote');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    // The submission used to be faked with a timer and the data thrown away.
+    // It now posts to /api/leads, which is what puts the lead in the pipeline.
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"] span');
       const original = btn.textContent;
+      const data = new FormData(form);
       btn.textContent = 'Sending...';
-      setTimeout(() => {
+
+      try {
+        const res = await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: (data.get('name') || '').toString(),
+            email: (data.get('email') || '').toString(),
+            brand: (data.get('company') || '').toString() || null,
+            phone: (data.get('phone') || '').toString() || null,
+            ad_spend: (data.get('spend') || '').toString() || null,
+            message: (data.get('message') || '').toString() || null,
+            website: (data.get('website') || '').toString() || null,
+            source_path: location.pathname,
+            session_id: window.__rxSession || null,
+            type: 'brand'
+          })
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          btn.textContent = original;
+          formNote.textContent = body.error || 'Something went wrong — please email us instead.';
+          return;
+        }
         btn.textContent = "You're in! We'll be in touch soon.";
-        formNote.textContent = "Thanks — check your inbox shortly.";
+        formNote.textContent = 'Thanks — check your inbox shortly.';
         form.reset();
         fireConfetti(document.getElementById('confetti'));
+        if (window.rxTrack) window.rxTrack('form_submit', { label: 'contact' });
         setTimeout(() => { btn.textContent = original; }, 3200);
-      }, 900);
+      } catch (err) {
+        btn.textContent = original;
+        formNote.textContent = 'Network error — please try again.';
+      }
     });
+
+    // First interaction with the form counts as a form start, which is what
+    // the conversion funnel's middle step measures.
+    let started = false;
+    form.addEventListener('input', () => {
+      if (started) return;
+      started = true;
+      if (window.rxTrack) window.rxTrack('form_start', { label: 'contact' });
+    }, { once: false });
   }
 
   /* ============ SMOOTH ANCHOR SCROLL OFFSET FOR FIXED NAV ============ */

@@ -59,24 +59,27 @@
       <a href="#results" data-text="Results"><span>Results</span></a>
       <a href="#pricing" data-text="Pricing"><span>Pricing</span></a>
       <a href="#contact" data-text="Contact"><span>Contact</span></a>
+      <a href="/blog" data-text="Blog"><span>Blog</span></a>
     </nav>
 
     <a href="#contact" class="btn btn-ghost nav-cta magnetic">
       <span>Book a Call</span>
     </a>
 
-    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
+<div class="menu-backdrop" id="menuBackdrop" hidden></div>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#engine">Engine</a>
   <a href="#framework">Framework</a>
   <a href="#results">Results</a>
   <a href="#pricing">Pricing</a>
   <a href="#contact">Contact</a>
+  <a href="/blog">Blog</a>
 </div>
 
 <main id="top">
@@ -686,9 +689,14 @@
             <input type="email" name="email" placeholder="you@brand.com" required>
           </label>
         </div>
-        <label>Brand / Company
-          <input type="text" name="company" placeholder="Your Brand Inc.">
-        </label>
+        <div class="form-row">
+          <label>Brand / Company
+            <input type="text" name="company" placeholder="Your Brand Inc.">
+          </label>
+          <label>Phone / WhatsApp
+            <input type="tel" name="phone" placeholder="+1 555 123 4567" autocomplete="tel">
+          </label>
+        </div>
         <label>Monthly Ad Spend
           <select name="spend">
             <option>Under $10K</option>
@@ -700,6 +708,9 @@
         <label>What are you looking to scale?
           <textarea name="message" rows="3" placeholder="Tell us about your goals..."></textarea>
         </label>
+        <label class="hp-field" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
         <button type="submit" class="btn btn-primary magnetic full"><span>Send &amp; Book a Call</span><i class="arrow"></i></button>
         <p class="form-note" id="formNote">We'll never share your info. No spam, ever.</p>
       </form>
@@ -721,6 +732,7 @@
       <a href="#results">Results</a>
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
+      <a href="/blog">Blog</a>
     </div>
   </div>
 

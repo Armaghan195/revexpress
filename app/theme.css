@@ -1,0 +1,68 @@
+/* ===========================================================================
+   Shared brand theme.
+
+   These are the same tokens the marketing site uses (public/css/style.css), so
+   the portal and the blog inherit the landing page's identity rather than
+   inventing a second one. Kept in a small file of their own so the portal does
+   not have to pull in the whole marketing stylesheet.
+   =========================================================================== */
+
+:root {
+  --navy-950: #04060d;
+  --navy-900: #070b18;
+  --navy-800: #0b1226;
+  --navy-700: #111a35;
+  --navy-600: #182450;
+
+  --blue-500: #2f7df6;
+  --blue-400: #5b9dff;
+  --blue-300: #8fbaff;
+  --orange-500: #f5811f;
+  --orange-400: #ff9d4d;
+  --orange-300: #ffc27a;
+
+  --white: #f6f8fd;
+  --muted: #9aa4c5;
+  --muted-dim: #6b7595;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-soft: rgba(255, 255, 255, 0.05);
+  --glass: rgba(255, 255, 255, 0.04);
+
+  --radius: 20px;
+  --radius-sm: 14px;
+  --grad-blue-orange: linear-gradient(120deg, var(--blue-400), var(--orange-400));
+
+  --ff-display: 'Space Grotesk', system-ui, sans-serif;
+  --ff-body: 'Inter', system-ui, sans-serif;
+  --ff-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+/* The marketing site's ambient wash, reused so a page of the portal or the
+   blog sits on the same ground as the landing page. */
+.brand-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.brand-bg::before,
+.brand-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: .5;
+}
+.brand-bg::before {
+  width: 620px; height: 620px;
+  top: -180px; left: -140px;
+  background: radial-gradient(circle, var(--blue-500), transparent 70%);
+}
+.brand-bg::after {
+  width: 560px; height: 560px;
+  right: -160px; bottom: -200px;
+  background: radial-gradient(circle, var(--orange-500), transparent 70%);
+  opacity: .34;
+}

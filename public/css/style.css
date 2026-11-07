@@ -97,7 +97,7 @@ button,input,select,textarea{font:inherit;color:inherit}
   max-width:1280px;margin:0 auto;padding:0 32px;
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
-.brand{display:flex;align-items:center;gap:11px}
+.brand{display:flex;align-items:center;gap:11px;padding:7px 0;min-height:44px}
 .brand-mark{
   width:auto;height:30px;display:block;flex-shrink:0;
   transition:transform .4s var(--ease),filter .4s var(--ease);
@@ -156,7 +156,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .arrow{width:10px;height:10px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);transition:transform .3s var(--ease)}
 .btn:hover .arrow{transform:rotate(45deg) translate(2px,-2px)}
 
-.nav-burger{display:none;flex-direction:column;gap:5px;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:none;cursor:none}
+.nav-burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:none;cursor:none}
 .nav-burger span{width:16px;height:1.5px;background:var(--white);transition:.3s}
 .mobile-menu{
   position:fixed;top:0;right:0;height:100vh;height:100dvh;width:78vw;max-width:320px;z-index:199;
@@ -167,6 +167,11 @@ button,input,select,textarea{font:inherit;color:inherit}
   border-left:1px solid var(--line);
 }
 .mobile-menu.open{transform:translateX(0)}
+.menu-backdrop{
+  position:fixed;inset:0;z-index:198;background:rgba(4,6,14,.6);
+  opacity:0;pointer-events:none;transition:opacity .35s var(--ease);
+}
+.menu-backdrop.open{opacity:1;pointer-events:auto}
 .mobile-menu a{padding:14px 0;font-size:18px;font-family:var(--ff-display);border-bottom:1px solid var(--line)}
 
 @media (max-width:900px){
@@ -616,7 +621,7 @@ section{position:relative;padding:120px 0}
    16px tall inline, well under the 44px iOS / 48px Android guidance. */
 @media (hover:none),(pointer:coarse),(max-width:720px){
   .footer-links{gap:4px 20px}
-  .footer-links a{padding:14px 4px}
+  .footer-links a{padding:14px 12px;min-width:44px;text-align:center}
 }
 .footer-links a:hover{color:var(--orange-400)}
 
@@ -828,7 +833,7 @@ section{background:transparent}
 .built-by:hover .built-by-cta,.built-by:focus-visible .built-by-cta{opacity:1;transform:scale(1.08)}
 .built-by:active{transform:translateY(0) scale(.985)}
 @media (max-width:520px){
-  .built-by{gap:9px;padding:10px 15px}
+  .built-by{gap:9px;padding:12px 15px;min-height:44px}
   .built-by-label{font-size:10px;letter-spacing:.07em}
   .built-by-mark{font-size:15px}
   .built-by-name{font-size:15px}
@@ -845,3 +850,7 @@ section{background:transparent}
     background:none;color:var(--blue-400);-webkit-text-fill-color:currentColor;
   }
 }
+
+/* Honeypot: hidden from people, filled in by bots. Not display:none, which
+   some bots detect and skip. */
+.hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
